@@ -13,12 +13,6 @@
                         class = 'btn-primary'/>
            	</xpath>
 
-           	<!--  <xpath expr="//header" position="inside">
-           		<button name="action_split"
-                        type="object"
-                        string="Split"
-                        class = 'btn-primary'/>
-           	</xpath> -->
 
     </field>
    </record>
