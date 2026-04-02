@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sale_order_form_discount_approval" model="ir.ui.view">
+            <field name="name">sale.order.form.discount.approval</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <field name="approval_state"
+                           widget="statusbar"
+                           statusbar_visible="pending,level1,level2,approved"
+                           invisible="not approval_state"/>
+
+                    <button name="action_approve_level1"
+                            string="Approve (Level 1)"
+                            type="object"
+                            class="btn-success"
+                            invisible="approval_state != 'pending'"/>
+
+                    <button name="action_approve_level2"
+                            string="Approve (Level 2)"
+                            type="object"
+                            class="btn-success"
+                            invisible="approval_state != 'level1'"/>
+
+                    <button name="action_approve_level3"
+                            string="Approve (Level 3)"
+                            type="object"
+                            class="btn-success"
+                            invisible="approval_state != 'level2'"/>
+
+                    <button name="action_reject"
+                            string="Reject"
+                            type="object"
+                            class="btn-danger"
+                            invisible="approval_state not in ['pending', 'level1', 'level2']"/>s
+                            <!-- invisible="approval_state == 'draft' or approval_state == 'approved'"/> -->
+                </xpath>
+                <xpath expr="//sheet" position="before">
+                    <div class="alert alert-warning" invisible="not approval_state">
+                        <b>Approval Required:</b>
+                        A line discount exceeds the maximum allowed discount.
+                        Current status: <field name="approval_state" readonly="1" nolabel="1"/>
+                    </div>
+                </xpath>
+                
+                <xpath expr="//notebook" position="inside">
+                    <page string="Approval Log">
+                        <field name="approval_log_ids">
+                            <list>
+                                <field name="user_id"/>
+                                <field name="level"/>
+                                <field name="action"/>
+                                <field name="date"/>
+                            </list>
+                        </field>
+                    </page>
+                 </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
