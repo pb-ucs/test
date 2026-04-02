@@ -1,6 +1,7 @@
 {
     'name': 'Sale Discount Approval',
     'version': '18.0.1.0.0',
+    'license': 'LGPL-3',
     'website': 'https://uncannycs.com',
     'author': 'Uncanny Consulting Services LLP',
     'category': 'Services',
@@ -12,7 +13,9 @@
         'views/sale_order_views.xml',
         'views/res_config_settings_view.xml',
         'views/sale_approval_view.xml',
+        'data/mail_template.xml',
     ],
+    'application': True,
     'installable': True,
-    'license': 'LGPL-3',
+    'auto_install': False,
 }

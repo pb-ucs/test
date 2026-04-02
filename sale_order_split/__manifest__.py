@@ -6,12 +6,11 @@
     'license':'LGPL-3',
 	'category': 'Services',
 	'summary': 'Split sale orders into multiple orders based on defined criteria.',
-	'depends': ['base', 'sale'],
+	'depends': ['base', 'sale_management'],
 	'data': [
 		'views/sale_order.xml',
 		'views/sale_order_line.xml',	
 	],
-
 	'application': True,
 	'installable': True,
 	'auto_install': False,

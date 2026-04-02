@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="email_template_custom" model="mail.template">
+            <field name="name">My Custom Notification</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="subject">Notification </field>
+            <field name="body_html" type="html">
+                <p><t t-esc="object.name"/> quotation requires approval</p>
+                <p>
+                    Approval Stage:
+                    <strong t-esc="dict(object._fields['approval_state'].selection).get(object.approval_state)"/>
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

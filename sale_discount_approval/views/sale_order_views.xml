@@ -35,16 +35,7 @@
                             type="object"
                             class="btn-danger"
                             invisible="approval_state not in ['pending', 'level1', 'level2']"/>s
-                            <!-- invisible="approval_state == 'draft' or approval_state == 'approved'"/> -->
                 </xpath>
-                <xpath expr="//sheet" position="before">
-                    <div class="alert alert-warning" invisible="not approval_state">
-                        <b>Approval Required:</b>
-                        A line discount exceeds the maximum allowed discount.
-                        Current status: <field name="approval_state" readonly="1" nolabel="1"/>
-                    </div>
-                </xpath>
-                
                 <xpath expr="//notebook" position="inside">
                     <page string="Approval Log">
                         <field name="approval_log_ids">
